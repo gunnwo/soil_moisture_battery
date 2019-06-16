@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Bodenfeuchte</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body{text-align:center;font-family:verdana;}
+input{width:300px}
+button{border:0;border-radius:0.3rem;background-color:#669900;color:#fff;line-height:2.4rem;font-size:1.2rem;width:300px}
+</style>
+</head>
+<body>
+<h1>Bodenfeuchte</h1>
+<br>
+<form action="/setup" method="get" id="form1">
+<p>Interval (Minuten):<br><input name="scan" value="10" type="number" min='1' max='15'><br></p>
+<p>MQTT-Broker:<br><input name="mqtt" value="heizung.fritz.box" type="text"><br></p>
+<p>Messwert untere Grenze:<br><input name="lower" value="20" type="number" min='1' max='500'></p>
+<p>Messwert obere Grenze:<br><input name="lower" value="20" type="number" min='1' max='500'></p>
+</form>
+<br><br>
+<p><button type="submit" form="form1" value="min">Setup Minimum (Luft)</button></p>
+<p><button type="submit" form="form1" value="max">Setup Maximum (Wasser)</button></p><br>
+<p><button type="submit" form="form1" value="Submit">Speichern</button></p>
+</body>
+</html>

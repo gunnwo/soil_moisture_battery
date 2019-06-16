@@ -1,0 +1,6 @@
+__vm/
+Debug/
+Release/
+~*.*
+*.suo
+*.sln
