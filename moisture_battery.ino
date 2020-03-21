@@ -22,7 +22,7 @@ int PinSwitch = 5; // D1
 long lSoilMin = 450;   // moisture min air
 long lSoilMax = 850;   // moisture max water
 
-unsigned long lMinutes = 1;    // x minutes wait until next measure
+unsigned long lMinutes = 15;    // x minutes wait until next measure
 long lHumOff = 10;
 
 
@@ -474,6 +474,27 @@ void loop()
 
 			sprintf(mqtt_path, "%s/%s", host2, topic_moisture);
 			mqttclient.publish(mqtt_path, String(fMoist).c_str(), false);
+
+			Serial.print(mqtt_path);
+			Serial.print("=");
+			Serial.println(String(fMoist).c_str());
+		}
+
+		{
+			// *** moisture_raw ***
+			char mqtt_path[60] = { '/0' };
+			String host;
+			host = WiFi.hostname();
+			host.toLowerCase();
+
+			char host2[20] = { '/0' };
+			for (int i = 0; i < host.length(); i++)
+			{
+				host2[i] = host.charAt(i);
+			}
+
+			sprintf(mqtt_path, "%s/%s_raw", host2, topic_moisture);
+			mqttclient.publish(mqtt_path, String(inVal).c_str(), false);
 
 			Serial.print(mqtt_path);
 			Serial.print("=");
